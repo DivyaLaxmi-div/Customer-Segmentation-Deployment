@@ -9,7 +9,7 @@ st.title("Customer Segmentation Prediction")
 
 # Input Fields
 income = st.number_input('Enter Annual Income (in $K)', min_value=0)
-spending_score = st.number_input('Enter Spending Score (in $k)', min_value=1, max_value=100)
+spending_score = st.number_input('Enter Spending Score ', min_value=1, max_value=100)
 
 cluster_labels = {
     0: 'Medium Income - Medium Spender',
@@ -24,4 +24,5 @@ if st.button('Predict Cluster'):
     cluster = model.predict(input_data)[0]
     st.success(f'You are belongs to {cluster_labels[cluster]}')
     st.info(f"Income Entered: ₹{income * 1000}")
-    st.info(f"Spendings: {spending_score*1000}")
+    st.info(f"Estimated Spending Score: {round(spending_score, 2)}/100")
+
